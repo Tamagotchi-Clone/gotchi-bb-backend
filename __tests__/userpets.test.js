@@ -16,5 +16,17 @@ describe('gotchi-clone routes', () => {
 
   it('creates a new pet in the userPet table', async () => {
     const agent = request.agent(app);
+
+    const expected = {
+      profile_id: '1',
+      pet_id: '1',
+      name: 'Omelette',
+      hunger: 0,
+      play: 0,
+      cleanliness: 0,
+    };
+
+    const res = await agent.post('/api/v1/userpets').send(expected);
+    expect(res.body).toEqual({ id: expect.any(String), ...expected });
   });
 });

@@ -39,7 +39,10 @@ describe('gotchi-clone routes', () => {
 
     await agent.post('/api/v1/profiles').send(expected);
     const res = await agent.get('/api/v1/profiles');
-    expect(res.body).toEqual([{ id: expect.any(String), ...expected }]);
+    expect(res.body).toEqual([
+      { id: expect.any(String), user_id: '1', name: 'omelette' },
+      { id: expect.any(String), ...expected },
+    ]);
   });
 
   it('get profile by id', async () => {
@@ -47,7 +50,7 @@ describe('gotchi-clone routes', () => {
     const expected = {
       id: '1',
       user_id: '1',
-      name: 'Ianmami@example.com',
+      name: 'omelette',
     };
     await agent.post('/api/v1/profiles').send(expected);
     const res = await agent.get(`/api/v1/profiles/${expected.id}`);
@@ -59,7 +62,7 @@ describe('gotchi-clone routes', () => {
     const expected = {
       id: '1',
       user_id: '1',
-      name: 'Ianmami@example.com',
+      name: 'omelette',
     };
     await agent.post('/api/v1/profiles').send(expected);
     const res = await agent
@@ -73,7 +76,7 @@ describe('gotchi-clone routes', () => {
     const expected = {
       id: '1',
       user_id: '1',
-      name: 'Ianmami@example.com',
+      name: 'omelette',
     };
     await agent.post('/api/v1/profiles').send(expected);
     const res = await agent.delete(`/api/v1/profiles/${expected.id}`);

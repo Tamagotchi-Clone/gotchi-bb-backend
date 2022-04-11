@@ -37,3 +37,6 @@ VALUES ('Mametchi', 'https://pbs.twimg.com/media/FP-gyhdaAAUvLLN?format=jpg&name
 INSERT INTO users (email, username)
 VALUES 
 ('Ianmami@example.com', 'Conor');
+
+INSERT INTO profiles (user_id, name)
+VALUES ('1', 'omelette');
