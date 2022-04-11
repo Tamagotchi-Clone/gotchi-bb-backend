@@ -53,4 +53,18 @@ describe('gotchi-clone routes', () => {
     const res = await agent.get(`/api/v1/profiles/${expected.id}`);
     expect(res.body).toEqual({ id: expect.any(String), ...expected });
   });
+
+  it('updates profile by id', async () => {
+    const agent = request.agent(app);
+    const expected = {
+      id: '1',
+      user_id: '1',
+      username: 'Ianmami@example.com',
+    };
+    await agent.post('/api/v1/profiles').send(expected);
+    const res = await agent
+      .patch('/api/v1/profiles/1')
+      .send({ username: 'violet' });
+    expect(res.body).toEqual({ id: '1', user_id: '1', username: 'violet' });
+  });
 });
