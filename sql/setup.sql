@@ -1,0 +1,21 @@
+DROP TABLE IF EXISTS users, pets;
+DROP TABLE IF EXISTS profile CASCADE;
+
+CREATE TABLE users (
+    id BIGINT GENERATED ALWAYS AS IDENTITY KEY,
+    email TEXT NOT NULL,
+    password TEXT NOT NULL
+);
+
+CREATE TABLE pets (
+    id BIGINT GENERATED ALWAYS AS IDENTITY KEY,
+    profile_id TEXT,
+    species TEXT NOT NULL,
+    image TEXT NOT NULL
+);
+
+CREATE TABLE profile (
+    id BIGINT GENERATED ALWAYS AS IDENTITY KEY,
+    username TEXT NOT NULL,
+    user_id BIGINT REFERENCES users(id)
+);
