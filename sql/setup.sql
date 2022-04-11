@@ -1,5 +1,5 @@
-DROP TABLE IF EXISTS pets;
-DROP TABLE IF EXISTS users, profiles, userPets, profile_pets CASCADE;
+
+DROP TABLE IF EXISTS users, pets, profiles, userPets, profile_pets CASCADE;
 
 CREATE TABLE users (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
