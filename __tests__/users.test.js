@@ -22,14 +22,17 @@ describe('gotchi-clone routes', () => {
     );
   });
 
+  it('should login and redirect users to to profile', async () => {
+    const req = await request
+      .agent(app)
+      .get('/api/v1/users/login/callback?code=42')
+      .redirects(1);
 
-  // it('should login and redirect users to to profile', async () => {
-  //   const req = await request.agent(app).get('/api/v1/users/login/callback?code=42').redirects(1);
-
-  //   expect(req.body).toEqual({ id: expect.any(String),
-  //   email: 'not-real@example.com',
-  //   password: expect.any(String),
-  //   iat: expect.any(Number),
-  //   exp: expect.any(Number), });
-  // })
+    expect(req.body).toEqual({
+      id: expect.any(String),
+      email: 'not-real@example.com',
+      iat: expect.any(Number),
+      exp: expect.any(Number),
+    });
+  });
 });

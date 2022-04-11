@@ -2,9 +2,9 @@
 DROP TABLE IF EXISTS users, pets, profiles, userPets, profile_pets CASCADE;
 
 CREATE TABLE users (
-    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    id BIGINT GENERATED ALWAYS AS IDENTITY,
     email TEXT NOT NULL,
-    password TEXT NOT NULL
+    username TEXT NOT NULL PRIMARY KEY
 );
 
 CREATE TABLE pets (
@@ -15,7 +15,6 @@ CREATE TABLE pets (
 
 CREATE TABLE profiles (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    username TEXT NOT NULL,
     user_id BIGINT REFERENCES users(id)
 );
 
@@ -28,7 +27,7 @@ CREATE TABLE userPets (
     name TEXT,
     hunger INT NOT NULL,
     play INT NOT NULL,
-    cleanliness INT NOT NULL,
+    cleanliness INT NOT NULL
 );
 
 INSERT INTO pets (species, image)
