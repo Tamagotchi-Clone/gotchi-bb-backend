@@ -21,14 +21,11 @@ CREATE TABLE profiles (
 
 CREATE TABLE userPets (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    profile_id BIGINT REFERENCES profiles(id),
+    pet_id BIGINT REFERENCES pets(id),
     species TEXT NOT NULL,
     image TEXT NOT NULL,
     name TEXT
-);
-
-CREATE TABLE profile_pets (
-    profile_id BIGINT REFERENCES profiles(id),
-    pets_id BIGINT REFERENCES userPets(id)
 );
 
 INSERT INTO pets (species, image)
