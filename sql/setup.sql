@@ -23,9 +23,12 @@ CREATE TABLE userPets (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     profile_id BIGINT REFERENCES profiles(id),
     pet_id BIGINT REFERENCES pets(id),
-    species TEXT NOT NULL,
-    image TEXT NOT NULL,
-    name TEXT
+    -- species TEXT NOT NULL,
+    -- image TEXT NOT NULL,
+    name TEXT,
+    hunger INT NOT NULL,
+    play INT NOT NULL,
+    cleanliness INT NOT NULL,
 );
 
 INSERT INTO pets (species, image)
