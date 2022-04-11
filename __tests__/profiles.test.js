@@ -67,4 +67,16 @@ describe('gotchi-clone routes', () => {
       .send({ username: 'violet' });
     expect(res.body).toEqual({ id: '1', user_id: '1', username: 'violet' });
   });
+
+  it('deletes a profile', async () => {
+    const agent = request.agent(app);
+    const expected = {
+      id: '1',
+      user_id: '1',
+      username: 'Ianmami@example.com',
+    };
+    await agent.post('/api/v1/profiles').send(expected);
+    const res = await agent.delete(`/api/v1/profiles/${expected.id}`);
+    expect(res.body).toEqual(expected);
+  });
 });
