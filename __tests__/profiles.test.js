@@ -29,4 +29,16 @@ describe('gotchi-clone routes', () => {
     const res = await agent.post('/api/v1/profiles').send(expected);
     expect(res.body).toEqual(expected);
   });
+
+  it('gets a list of all profiles', async () => {
+    const agent = request.agent(app);
+    const expected = {
+      user_id: '1',
+      username: 'Ianmami@example.com',
+    };
+
+    await agent.post('/api/v1/profiles').send(expected);
+    const res = await agent.get('/api/v1/profiles');
+    expect(res.body).toEqual([{ id: expect.any(String), ...expected }]);
+  });
 });
