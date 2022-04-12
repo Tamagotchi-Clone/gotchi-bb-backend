@@ -1,5 +1,5 @@
 
-
+DROP TABLE IF EXISTS users, pets, profiles, userPets, pet_scores CASCADE;
 
 CREATE TABLE users (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -24,9 +24,9 @@ CREATE TABLE userPets (
     profile_id BIGINT REFERENCES profiles(id),
     pet_id BIGINT REFERENCES pets(id),
     name TEXT,
-    hunger TIMESTAMP DEFAULT NOW(),
-    play  TIMESTAMP DEFAULT NOW(),
-    cleanliness  TIMESTAMP DEFAULT NOW()
+    hunger TIMESTAMP,
+    play  TIMESTAMP,
+    cleanliness  TIMESTAMP
 );
 
 CREATE TABLE pet_scores (
@@ -46,6 +46,3 @@ VALUES
 
 INSERT INTO profiles (user_id, name)
 VALUES ('1', 'omelette');
-
-INSERT INTO userPets(profile_id, pet_id, name)
-VALUES ('1', '1', 'omelette');

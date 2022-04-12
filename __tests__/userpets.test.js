@@ -14,16 +14,13 @@ describe('gotchi-clone routes', () => {
     pool.end();
   });
 
-  it('creates a new pet in the userPet table', async () => {
+  it.only('creates a new pet in the userPet table', async () => {
     const agent = request.agent(app);
 
     const expected = {
       profile_id: '1',
       pet_id: '1',
       name: 'Omelette',
-      hunger: 0,
-      play: 0,
-      cleanliness: 0,
     };
 
     const res = await agent.post('/api/v1/userpets').send(expected);
