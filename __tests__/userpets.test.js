@@ -93,4 +93,22 @@ describe('gotchi-clone routes', () => {
       cleanliness: 0,
     });
   });
+
+  it('it deletes a profile', async () => {
+    const agent = request.agent(app);
+
+    const expected = {
+      id: '1',
+      profile_id: '1',
+      pet_id: '1',
+      name: 'Omelette',
+      hunger: 0,
+      play: 0,
+      cleanliness: 0,
+    };
+
+    await agent.post('/api/v1/userpets').send(expected);
+    const res = await agent.delete(`/api/v1/userpets/${expected.id}`);
+    expect(res.body).toEqual(expected);
+  });
 });
