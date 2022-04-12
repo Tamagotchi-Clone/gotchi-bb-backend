@@ -21,9 +21,9 @@ describe('gotchi-clone routes', () => {
       profile_id: '1',
       pet_id: '1',
       name: 'Omelette',
-      hunger: 0,
-      play: 0,
-      cleanliness: 0,
+      hunger: null,
+      play: null,
+      cleanliness: null,
     };
 
     const res = await agent.post('/api/v1/userpets').send(expected);
@@ -37,9 +37,9 @@ describe('gotchi-clone routes', () => {
       profile_id: '1',
       pet_id: '1',
       name: 'Omelette',
-      hunger: 0,
-      play: 0,
-      cleanliness: 0,
+      hunger: null,
+      play: null,
+      cleanliness: null,
     };
 
     await agent.post('/api/v1/userpets').send(expected);
@@ -55,9 +55,9 @@ describe('gotchi-clone routes', () => {
       profile_id: '1',
       pet_id: '1',
       name: 'Omelette',
-      hunger: 0,
-      play: 0,
-      cleanliness: 0,
+      hunger: null,
+      play: null,
+      cleanliness: null,
     };
 
     await agent.post('/api/v1/userpets').send(expected);
@@ -74,9 +74,9 @@ describe('gotchi-clone routes', () => {
       profile_id: '1',
       pet_id: '1',
       name: 'Omelette',
-      hunger: 0,
-      play: 0,
-      cleanliness: 0,
+      hunger: null,
+      play: null,
+      cleanliness: null,
     };
 
     await agent.post('/api/v1/userpets').send(expected);
@@ -88,9 +88,9 @@ describe('gotchi-clone routes', () => {
       profile_id: '1',
       pet_id: '1',
       name: 'egg',
-      hunger: 0,
-      play: 0,
-      cleanliness: 0,
+      hunger: null,
+      play: null,
+      cleanliness: null,
     });
   });
 
@@ -102,9 +102,9 @@ describe('gotchi-clone routes', () => {
       profile_id: '1',
       pet_id: '1',
       name: 'Omelette',
-      hunger: 0,
-      play: 0,
-      cleanliness: 0,
+      hunger: null,
+      play: null,
+      cleanliness: null,
     };
 
     await agent.post('/api/v1/userpets').send(expected);
