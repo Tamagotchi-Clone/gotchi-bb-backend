@@ -41,7 +41,7 @@ describe('gotchi-clone routes', () => {
       play: null,
       cleanliness: null,
     };
-
+    await agent.get('/api/v1/users/login/callback?code=42').redirects(1);
     await agent.post('/api/v1/userpets').send(expected);
     const res = await agent.get('/api/v1/userpets');
     expect(res.body).toEqual([{ id: expect.any(String), ...expected }]);
@@ -59,7 +59,7 @@ describe('gotchi-clone routes', () => {
       play: null,
       cleanliness: null,
     };
-
+    await agent.get('/api/v1/users/login/callback?code=42').redirects(1);
     await agent.post('/api/v1/userpets').send(expected);
 
     const res = await agent.get(`/api/v1/userpets/${expected.id}`);
@@ -78,7 +78,7 @@ describe('gotchi-clone routes', () => {
       play: null,
       cleanliness: null,
     };
-
+    await agent.get('/api/v1/users/login/callback?code=42').redirects(1);
     await agent.post('/api/v1/userpets').send(expected);
     const res = await agent
       .patch(`/api/v1/userpets/${expected.id}`)
@@ -106,7 +106,7 @@ describe('gotchi-clone routes', () => {
       play: null,
       cleanliness: null,
     };
-
+    await agent.get('/api/v1/users/login/callback?code=42').redirects(1);
     await agent.post('/api/v1/userpets').send(expected);
     const res = await agent.delete(`/api/v1/userpets/${expected.id}`);
     expect(res.body).toEqual(expected);

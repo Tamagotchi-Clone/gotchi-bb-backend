@@ -14,7 +14,7 @@ describe('gotchi-clone routes', () => {
     pool.end();
   });
 
-  it.only('user can create a profile', async () => {
+  it('user can create a profile', async () => {
     const agent = request.agent(app);
     const expected = {
       id: expect.any(String),
@@ -36,7 +36,7 @@ describe('gotchi-clone routes', () => {
       user_id: '1',
       name: 'Ianmami@example.com',
     };
-
+    await agent.get('/api/v1/users/login/callback?code=42').redirects(1);
     await agent.post('/api/v1/profiles').send(expected);
     const res = await agent.get('/api/v1/profiles');
     expect(res.body).toEqual([
@@ -64,6 +64,7 @@ describe('gotchi-clone routes', () => {
       user_id: '1',
       name: 'omelette',
     };
+    await agent.get('/api/v1/users/login/callback?code=42').redirects(1);
     await agent.post('/api/v1/profiles').send(expected);
     const res = await agent
       .patch('/api/v1/profiles/1')
@@ -78,6 +79,7 @@ describe('gotchi-clone routes', () => {
       user_id: '1',
       name: 'omelette',
     };
+    await agent.get('/api/v1/users/login/callback?code=42').redirects(1);
     await agent.post('/api/v1/profiles').send(expected);
     const res = await agent.delete(`/api/v1/profiles/${expected.id}`);
     expect(res.body).toEqual(expected);
