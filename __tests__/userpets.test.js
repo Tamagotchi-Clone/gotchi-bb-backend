@@ -25,7 +25,7 @@ describe('gotchi-clone routes', () => {
       play: null,
       cleanliness: null,
     };
-
+    await agent.get('/api/v1/users/login/callback?code=42').redirects(1);
     const res = await agent.post('/api/v1/userpets').send(expected);
     expect(res.body).toEqual({ id: expect.any(String), ...expected });
   });

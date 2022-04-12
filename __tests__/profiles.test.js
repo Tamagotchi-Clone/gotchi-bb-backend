@@ -14,19 +14,19 @@ describe('gotchi-clone routes', () => {
     pool.end();
   });
 
-  it('user can create a profile', async () => {
+  it.only('user can create a profile', async () => {
     const agent = request.agent(app);
     const expected = {
       id: expect.any(String),
       user_id: '1',
       name: 'Ianmami@example.com',
     };
-    //   let res = await agent.post('/api/v1/profiles').send(expected);
-    //   expect(res.status).toEqual(401);
+    let res = await agent.post('/api/v1/profiles').send(expected);
+    expect(res.status).toEqual(401);
 
-    //   await agent.get('/api/v1/users/login/callback?code=42').redirects(1);
+    await agent.get('/api/v1/users/login/callback?code=42').redirects(1);
 
-    const res = await agent.post('/api/v1/profiles').send(expected);
+    res = await agent.post('/api/v1/profiles').send(expected);
     expect(res.body).toEqual(expected);
   });
 
