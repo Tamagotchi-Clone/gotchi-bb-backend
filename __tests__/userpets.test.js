@@ -130,6 +130,7 @@ describe('gotchi-clone routes', () => {
     await agent.get('/api/v1/users/login/callback?code=42').redirects(1);
 
     await agent.post('/api/v1/userpets').send(expected);
+
     const res = await agent
       .patch(`/api/v1/userpets/${expected.id}/hunger`)
       .send(expected.id);
@@ -138,7 +139,7 @@ describe('gotchi-clone routes', () => {
       userId: '1',
       petId: '1',
       name: 'Omelette',
-      hunger: '2022-04-13T05:08:26.812Z',
+      hunger: expect.any(String),
       play: expect.any(String),
       cleanliness: expect.any(String),
     });
