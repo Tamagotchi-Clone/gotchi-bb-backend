@@ -10,7 +10,8 @@ CREATE TABLE users (
 CREATE TABLE pets (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     species TEXT NOT NULL,
-    image TEXT NOT NULL
+    image TEXT NOT NULL,
+    hunger TIMESTAMP DEFAULT NOW()
 );
 
 CREATE TABLE profiles (
@@ -19,7 +20,7 @@ CREATE TABLE profiles (
     name TEXT NOT NULL
 );
 
-CREATE TABLE userPets (
+CREATE TABLE user_pets (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     profile_id BIGINT REFERENCES profiles(id),
     pet_id BIGINT REFERENCES pets(id),
@@ -31,7 +32,7 @@ CREATE TABLE userPets (
 
 CREATE TABLE pet_scores (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    userPets_id BIGINT REFERENCES userPets(id),
+    user_pets_id BIGINT REFERENCES user_pets(id),
     hunger INT NOT NULL,
     play INT NOT NULL,
     cleanliness INT NOT NULL
