@@ -21,12 +21,12 @@ describe('gotchi-clone routes', () => {
       user_id: '1',
       name: 'Ianmami@example.com',
     };
-    //   let res = await agent.post('/api/v1/profiles').send(expected);
-    //   expect(res.status).toEqual(401);
+    let res = await agent.post('/api/v1/profiles').send(expected);
+    expect(res.status).toEqual(401);
 
-    //   await agent.get('/api/v1/users/login/callback?code=42').redirects(1);
+    await agent.get('/api/v1/users/login/callback?code=42').redirects(1);
 
-    const res = await agent.post('/api/v1/profiles').send(expected);
+    res = await agent.post('/api/v1/profiles').send(expected);
     expect(res.body).toEqual(expected);
   });
 
@@ -36,7 +36,7 @@ describe('gotchi-clone routes', () => {
       user_id: '1',
       name: 'Ianmami@example.com',
     };
-
+    await agent.get('/api/v1/users/login/callback?code=42').redirects(1);
     await agent.post('/api/v1/profiles').send(expected);
     const res = await agent.get('/api/v1/profiles');
     expect(res.body).toEqual([
@@ -64,6 +64,7 @@ describe('gotchi-clone routes', () => {
       user_id: '1',
       name: 'omelette',
     };
+    await agent.get('/api/v1/users/login/callback?code=42').redirects(1);
     await agent.post('/api/v1/profiles').send(expected);
     const res = await agent
       .patch('/api/v1/profiles/1')
@@ -78,6 +79,7 @@ describe('gotchi-clone routes', () => {
       user_id: '1',
       name: 'omelette',
     };
+    await agent.get('/api/v1/users/login/callback?code=42').redirects(1);
     await agent.post('/api/v1/profiles').send(expected);
     const res = await agent.delete(`/api/v1/profiles/${expected.id}`);
     expect(res.body).toEqual(expected);
