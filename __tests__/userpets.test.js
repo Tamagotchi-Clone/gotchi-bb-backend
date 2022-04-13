@@ -18,8 +18,8 @@ describe('gotchi-clone routes', () => {
     const agent = request.agent(app);
 
     const expected = {
-      profile_id: '1',
-      pet_id: '1',
+      userId: '1',
+      petId: '1',
       name: 'Omelette',
       hunger: null,
       play: null,
@@ -34,8 +34,8 @@ describe('gotchi-clone routes', () => {
     const agent = request.agent(app);
 
     const expected = {
-      profile_id: '1',
-      pet_id: '1',
+      userId: '1',
+      petId: '1',
       name: 'Omelette',
       hunger: null,
       play: null,
@@ -52,8 +52,8 @@ describe('gotchi-clone routes', () => {
 
     const expected = {
       id: '1',
-      profile_id: '1',
-      pet_id: '1',
+      userId: '1',
+      petId: '1',
       name: 'Omelette',
       hunger: null,
       play: null,
@@ -71,8 +71,8 @@ describe('gotchi-clone routes', () => {
 
     const expected = {
       id: '1',
-      profile_id: '1',
-      pet_id: '1',
+      userId: '1',
+      petId: '1',
       name: 'Omelette',
       hunger: null,
       play: null,
@@ -85,8 +85,8 @@ describe('gotchi-clone routes', () => {
       .send({ name: 'egg' });
     expect(res.body).toEqual({
       id: '1',
-      profile_id: '1',
-      pet_id: '1',
+      userId: '1',
+      petId: '1',
       name: 'egg',
       hunger: null,
       play: null,
@@ -99,8 +99,8 @@ describe('gotchi-clone routes', () => {
 
     const expected = {
       id: '1',
-      profile_id: '1',
-      pet_id: '1',
+      userId: '1',
+      petId: '1',
       name: 'Omelette',
       hunger: null,
       play: null,
