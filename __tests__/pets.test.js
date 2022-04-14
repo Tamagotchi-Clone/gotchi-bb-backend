@@ -52,7 +52,7 @@ describe('gotchi-clone routes', () => {
     expect(res.body).toEqual(expected);
   });
 
-  it.only('updates pet', async () => {
+  it('updates pet', async () => {
     const agent = request.agent(app);
 
     const expected = {
@@ -70,5 +70,19 @@ describe('gotchi-clone routes', () => {
       species: 'test test',
       image: 'image.png',
     });
+  });
+
+  it('deletes pet', async () => {
+    const agent = request.agent(app);
+
+    const expected = {
+      id: '2',
+      species: 'Test pet',
+      image: 'image.png',
+    };
+
+    await agent.post('/api/v1/pets').send(expected);
+    const res = await agent.delete(`/api/v1/pets/${expected.id}`);
+    expect(res.body).toEqual(expected);
   });
 });
