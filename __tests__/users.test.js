@@ -31,7 +31,7 @@ describe('gotchi-clone routes', () => {
     expect(req.body).toEqual({
       id: expect.any(String),
       email: 'not-real@example.com',
-      username: 'fake_user',
+      username: 'Admin',
       iat: expect.any(Number),
       exp: expect.any(Number),
     });
