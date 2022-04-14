@@ -41,3 +41,6 @@ VALUES
 
 INSERT INTO user_pets (user_id, pet_id, name)
 VALUES ('1', '1', 'omelette');
+
+INSERT INTO pet_scores (user_id, hunger, play, cleanliness)
+VALUES ('1', 1, 1, 1);

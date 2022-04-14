@@ -5,7 +5,7 @@ const app = require('../lib/app');
 
 jest.mock('../lib/utils/github');
 
-describe('pet_scores routes', () => {
+describe('petScores routes', () => {
   beforeEach(() => {
     return setup(pool);
   });
@@ -24,11 +24,26 @@ describe('pet_scores routes', () => {
       cleanliness: 0,
     };
     await agent.get('/api/v1/users/login/callback?code=42').redirects(1);
-    const res = await agent.post('/api/v1/pet_scores').send(expected);
+    const res = await agent.post('/api/v1/petScores').send(expected);
     expect(res.body).toEqual({
       id: expect.any(String),
       userId: expect.any(String),
       ...expected,
     });
+  });
+
+  it('gets the pet scores', async () => {
+    const agent = request.agent(app);
+    const expected = [
+      {
+        id: '1',
+        userId: '1',
+        hunger: 1,
+        play: 1,
+        cleanliness: 1,
+      },
+    ];
+    const res = await agent.get('/api/v1/petScores');
+    expect(res.body).toEqual(expected);
   });
 });
