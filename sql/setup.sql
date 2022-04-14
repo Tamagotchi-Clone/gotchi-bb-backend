@@ -26,10 +26,10 @@ CREATE TABLE user_pets (
 
 CREATE TABLE pet_scores (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    user_pets_id BIGINT REFERENCES user_pets(id),
-    hunger INT NOT NULL,
-    play INT NOT NULL,
-    cleanliness INT NOT NULL
+    user_id BIGINT REFERENCES users(id),
+    hunger INT,
+    play INT,
+    cleanliness INT
 );
 
 INSERT INTO pets (species, image)
@@ -41,3 +41,6 @@ VALUES
 
 INSERT INTO user_pets (user_id, pet_id, name)
 VALUES ('1', '1', 'omelette');
+
+INSERT INTO pet_scores (user_id, hunger, play, cleanliness)
+VALUES ('1', 1, 1, 1);
