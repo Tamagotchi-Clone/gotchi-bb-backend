@@ -26,12 +26,12 @@ describe('gotchi-clone routes', () => {
       play: expect.any(String),
       cleanliness: expect.any(String),
     };
-
+    await agent.get('/api/v1/users/login/callback?code=42').redirects(1);
     const res = await agent.post('/api/v1/userpets').send(expected);
     expect(res.body).toEqual({ id: expect.any(String), ...expected });
   });
 
-  it.skip('gets all pets', async () => {
+  it('gets all pets', async () => {
     const agent = request.agent(app);
 
     const expected = {
@@ -43,10 +43,21 @@ describe('gotchi-clone routes', () => {
       play: expect.any(String),
       cleanliness: expect.any(String),
     };
-
+    await agent.get('/api/v1/users/login/callback?code=42').redirects(1);
     await agent.post('/api/v1/userpets').send(expected);
     const res = await agent.get('/api/v1/userpets');
-    expect(res.body).toEqual([{ id: expect.any(String), ...expected }]);
+    expect(res.body).toEqual([
+      {
+        cleanliness: expect.any(String),
+        hunger: expect.any(String),
+        id: '1',
+        name: 'omelette',
+        petId: '1',
+        play: expect.any(String),
+        userId: '1',
+      },
+      { id: expect.any(String), ...expected },
+    ]);
   });
 
   it('gets pet by id', async () => {
@@ -59,9 +70,9 @@ describe('gotchi-clone routes', () => {
       name: 'Omelette',
       hunger: expect.any(String),
       play: expect.any(String),
-      cleanliness: '2022-04-13T22:16:10.633Z',
+      cleanliness: expect.any(String),
     };
-
+    await agent.get('/api/v1/users/login/callback?code=42').redirects(1);
     await agent.post('/api/v1/userpets').send(expected);
 
     const res = await agent.get(`/api/v1/userpets/${expected.id}`);
@@ -80,7 +91,7 @@ describe('gotchi-clone routes', () => {
       play: expect.any(String),
       cleanliness: expect.any(String),
     };
-
+    await agent.get('/api/v1/users/login/callback?code=42').redirects(1);
     await agent.post('/api/v1/userpets').send(expected);
     const res = await agent
       .patch(`/api/v1/userpets/${expected.id}`)
@@ -108,13 +119,13 @@ describe('gotchi-clone routes', () => {
       play: expect.any(String),
       cleanliness: expect.any(String),
     };
-
+    await agent.get('/api/v1/users/login/callback?code=42').redirects(1);
     await agent.post('/api/v1/userpets').send(expected);
     const res = await agent.delete(`/api/v1/userpets/${expected.id}`);
     expect(res.body).toEqual(expected);
   });
 
-  it.only('it updates pet by id', async () => {
+  it('it updates hunger by id', async () => {
     const agent = request.agent(app);
 
     const expected = {
@@ -130,6 +141,7 @@ describe('gotchi-clone routes', () => {
     await agent.get('/api/v1/users/login/callback?code=42').redirects(1);
 
     await agent.post('/api/v1/userpets').send(expected);
+
     const res = await agent
       .patch(`/api/v1/userpets/${expected.id}/hunger`)
       .send(expected.id);
@@ -138,7 +150,69 @@ describe('gotchi-clone routes', () => {
       userId: '1',
       petId: '1',
       name: 'Omelette',
-      hunger: '2022-04-13T05:08:26.812Z',
+      hunger: expect.any(String),
+      play: expect.any(String),
+      cleanliness: expect.any(String),
+    });
+  });
+
+  it('it updates play by id', async () => {
+    const agent = request.agent(app);
+
+    const expected = {
+      id: '2',
+      userId: '1',
+      petId: '1',
+      name: 'Omelette',
+      hunger: expect.any(String),
+      play: expect.any(String),
+      cleanliness: expect.any(String),
+    };
+
+    await agent.get('/api/v1/users/login/callback?code=42').redirects(1);
+
+    await agent.post('/api/v1/userpets').send(expected);
+
+    const res = await agent
+      .patch(`/api/v1/userpets/${expected.id}/play`)
+      .send(expected.id);
+    expect(res.body).toEqual({
+      id: '2',
+      userId: '1',
+      petId: '1',
+      name: 'Omelette',
+      hunger: expect.any(String),
+      play: expect.any(String),
+      cleanliness: expect.any(String),
+    });
+  });
+
+  it('it updates cleanliness by id', async () => {
+    const agent = request.agent(app);
+
+    const expected = {
+      id: '2',
+      userId: '1',
+      petId: '1',
+      name: 'Omelette',
+      hunger: expect.any(String),
+      play: expect.any(String),
+      cleanliness: expect.any(String),
+    };
+
+    await agent.get('/api/v1/users/login/callback?code=42').redirects(1);
+
+    await agent.post('/api/v1/userpets').send(expected);
+
+    const res = await agent
+      .patch(`/api/v1/userpets/${expected.id}/clean`)
+      .send(expected.id);
+    expect(res.body).toEqual({
+      id: '2',
+      userId: '1',
+      petId: '1',
+      name: 'Omelette',
+      hunger: expect.any(String),
       play: expect.any(String),
       cleanliness: expect.any(String),
     });
