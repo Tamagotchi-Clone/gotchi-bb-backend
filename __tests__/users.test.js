@@ -17,18 +17,21 @@ describe('gotchi-clone auth routes', () => {
   it('signs a user up via POST', async () => {
     const res = await request(app)
       .post('/api/v1/users')
-      .send({ username: 'violet', password: 'gotchiiscool' });
-    expect(res.body).toEqual({ id: expect.any(String), username: 'violet' });
+      .send({ username: 'vi', password: 'gotchiiscool' });
+    expect(res.body).toEqual({ id: expect.any(String), username: 'vi' });
   });
 
   it('signs in an existing user', async () => {
     const user = await UserService.create({
-      username: 'violet',
-      password: 'gotchiiscool',
+      username: 'tom agatchi',
+      password: 'gotchi',
     });
     const res = await request(app)
       .post('/api/v1/users/sessions')
-      .send({ username: 'violet', password: 'gotchiiscool' });
-    expect(res.body).toEqual({ message: 'you are signed in!', user });
+      .send({ username: 'tom agatchi', password: 'gotchi' });
+    expect(res.body).toEqual({
+      message: 'You are signed in!',
+      user: { ...user },
+    });
   });
 });
