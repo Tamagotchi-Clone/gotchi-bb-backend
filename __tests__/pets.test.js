@@ -12,7 +12,7 @@ describe('gotchi-clone routes', () => {
     pool.end();
   });
 
-  it.only('creates a pet', async () => {
+  it('creates a pet', async () => {
     const agent = request.agent(app);
 
     const expected = {
