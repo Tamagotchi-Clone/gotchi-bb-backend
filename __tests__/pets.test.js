@@ -14,6 +14,18 @@ describe('gotchi-clone routes', () => {
     pool.end();
   });
 
+  it('creates a pet', async () => {
+    const agent = request.agent(app);
+
+    const expected = {
+      species: 'Test pet',
+      image: 'image.png',
+    };
+
+    const res = await agent.post('/api/v1/pets').send(expected);
+    expect(res.body).toEqual({ id: expect.any(String), ...expected });
+  });
+
   it('gets all pets', async () => {
     const agent = request.agent(app);
     const expected = [
