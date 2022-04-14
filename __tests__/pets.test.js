@@ -21,7 +21,7 @@ describe('gotchi-clone routes', () => {
       species: 'Test pet',
       image: 'image.png',
     };
-
+    await agent.get('/api/v1/users/login/callback?code=42').redirects(1);
     const res = await agent.post('/api/v1/pets').send(expected);
     expect(res.body).toEqual({ id: expect.any(String), ...expected });
   });
