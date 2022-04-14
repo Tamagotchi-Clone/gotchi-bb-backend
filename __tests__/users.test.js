@@ -2,6 +2,8 @@ const pool = require('../lib/utils/pool');
 const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
+//const User = require('../lib/models/User');
+const UserService = require('../lib/services/UserService');
 
 describe('gotchi-clone auth routes', () => {
   beforeEach(() => {
@@ -17,5 +19,16 @@ describe('gotchi-clone auth routes', () => {
       .post('/api/v1/users')
       .send({ username: 'violet', password: 'gotchi is cool' });
     expect(res.body).toEqual({ id: expect.any(String), username: 'violet' });
+  });
+
+  it('signs in an existing user', async () => {
+    const user = await UserService.create({
+      username: 'violet',
+      password: 'gotchi is cool',
+    });
+    const res = await request(app)
+      .post('/api/v1/users/sessions')
+      .send({ username: 'violet', password: 'gotchi is cool' });
+    expect(res.body).toEqual({ message: 'you are signed in!', user });
   });
 });
