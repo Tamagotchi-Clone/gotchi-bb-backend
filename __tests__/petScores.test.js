@@ -59,4 +59,26 @@ describe('petScores routes', () => {
     const res = await agent.get(`/api/v1/petScores/${expected.id}`);
     expect(res.body).toEqual(expected);
   });
+
+  it('updates a score', async () => {
+    const agent = request.agent(app);
+    const expected = {
+      id: '1',
+      userId: '1',
+      hunger: 1,
+      play: 1,
+      cleanliness: 1,
+    };
+    await agent.post('/api.v1.petScores').send(expected);
+    const res = await agent
+      .patch(`/api/v1/petScores/${expected.id}`)
+      .send({ hunger: 2 });
+    expect(res.body).toEqual({
+      id: expect.any(String),
+      userId: '1',
+      hunger: 2,
+      play: 1,
+      cleanliness: 1,
+    });
+  });
 });
