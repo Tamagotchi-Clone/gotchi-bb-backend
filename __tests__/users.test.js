@@ -34,4 +34,20 @@ describe('gotchi-clone auth routes', () => {
       user: { ...user },
     });
   });
+
+  it('signs out a user', async () => {
+    await UserService.create({
+      username: 'bob',
+      password: 'bobguy',
+    });
+    await UserService.signIn({
+      username: 'bob',
+      password: 'bobguy',
+    });
+    const res = await request(app).delete('/api/v1/users/sessions');
+    expect(res.body).toEqual({
+      success: true,
+      message: 'signed out',
+    });
+  });
 });
