@@ -51,4 +51,24 @@ describe('gotchi-clone routes', () => {
     const res = await agent.get(`/api/v1/pets/${expected.id}`);
     expect(res.body).toEqual(expected);
   });
+
+  it.only('updates pet', async () => {
+    const agent = request.agent(app);
+
+    const expected = {
+      id: '2',
+      species: 'Test pet',
+      image: 'image.png',
+    };
+
+    await agent.post('/api/v1/pets').send(expected);
+    const res = await agent
+      .patch(`/api/v1/pets/${expected.id}`)
+      .send({ species: 'test test' });
+    expect(res.body).toEqual({
+      id: expect.any(String),
+      species: 'test test',
+      image: 'image.png',
+    });
+  });
 });
