@@ -253,4 +253,14 @@ describe('gotchi-clone routes', () => {
       cleanliness: expect.any(String),
     });
   });
+
+  it('returns the difference between two dates', async () => {
+    const agent = request.agent(app);
+
+    const date = { date: '2022-04-01' };
+
+    const res = await agent.post('/api/v1/userpets/difference').send(date);
+
+    expect(res.body).toHaveProperty('difference', expect.any(Number));
+  });
 });
