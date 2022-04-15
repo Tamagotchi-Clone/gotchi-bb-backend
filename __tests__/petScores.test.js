@@ -3,7 +3,7 @@ const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
 
-describe('petScores routes', () => {
+describe('scores routes', () => {
   beforeEach(() => {
     return setup(pool);
   });
@@ -27,7 +27,7 @@ describe('petScores routes', () => {
     };
     await agent.post('/api/v1/users').send(user);
     await agent.post('/api/v1/users/sessions').send(user);
-    const res = await agent.post('/api/v1/petScores').send(expected);
+    const res = await agent.post('/api/v1/scores').send(expected);
     expect(res.body).toEqual({
       id: expect.any(String),
       userId: expect.any(String),
@@ -37,20 +37,19 @@ describe('petScores routes', () => {
 
   it('gets the pet scores', async () => {
     const agent = request.agent(app);
-    const expected = [
-      {
-        id: '1',
-        userId: '1',
-        hunger: 1,
-        play: 1,
-        cleanliness: 1,
-      },
-    ];
-    const res = await agent.get('/api/v1/petScores');
-    expect(res.body).toEqual(expected);
+    const expected = {
+      id: '1',
+      user: 'violet',
+      pet: 'omelette',
+      cleaned: 1,
+      played: 1,
+      fed: 1,
+    };
+    const res = await agent.get('/api/v1/scores');
+    expect(res.body[0]).toEqual(expected);
   });
 
-  it.skip('gets the scores by id', async () => {
+  it('gets the scores by id', async () => {
     const agent = request.agent(app);
     const expected = {
       id: '1',
@@ -59,7 +58,7 @@ describe('petScores routes', () => {
       play: 1,
       cleanliness: 1,
     };
-    const res = await agent.get(`/api/v1/petScores/${expected.id}`);
+    const res = await agent.get(`/api/v1/scores/${expected.id}`);
     expect(res.body).toEqual(expected);
   });
 
@@ -72,9 +71,9 @@ describe('petScores routes', () => {
       play: 1,
       cleanliness: 1,
     };
-    await agent.post('/api.v1.petScores').send(expected);
+    await agent.post('/api.v1.scores').send(expected);
     const res = await agent
-      .patch(`/api/v1/petScores/${expected.id}`)
+      .patch(`/api/v1/scores/${expected.id}`)
       .send({ hunger: 2 });
     expect(res.body).toEqual({
       id: expect.any(String),
