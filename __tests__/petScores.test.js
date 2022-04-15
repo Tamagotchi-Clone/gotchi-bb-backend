@@ -38,12 +38,12 @@ describe('scores routes', () => {
   it('gets the pet scores', async () => {
     const agent = request.agent(app);
     const expected = {
-      id: '1',
       user: 'violet',
       pet: 'omelette',
       cleaned: 1,
       played: 1,
       fed: 1,
+      happiness: '3',
     };
     const res = await agent.get('/api/v1/scores');
     expect(res.body[0]).toEqual(expected);
