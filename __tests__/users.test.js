@@ -35,6 +35,23 @@ describe('gotchi-clone auth routes', () => {
     });
   });
 
+  it('returns user', async () => {
+    const agent = request.agent(app);
+    const user = {
+      username: 'harold',
+      password: 'haroldiscool',
+    };
+    await agent.post('/api/v1/users').send(user);
+    await agent.post('/api/v1/users/sessions').send(user);
+    const res = await agent.get('/api/v1/users/me');
+    expect(res.body).toEqual({
+      exp: expect.any(Number),
+      iat: expect.any(Number),
+      id: '2',
+      username: 'harold',
+    });
+  });
+
   it('signs out a user', async () => {
     await UserService.create({
       username: 'bob',
