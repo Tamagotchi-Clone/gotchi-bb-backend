@@ -3,8 +3,8 @@ DROP TABLE IF EXISTS users, pets, user_pets, pet_scores CASCADE;
 
 CREATE TABLE users (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    email TEXT NOT NULL,
-    username TEXT NOT NULL
+    username TEXT NOT NULL UNIQUE,
+    password_hash TEXT NOT NULL
 );
 
 CREATE TABLE pets (
@@ -35,9 +35,9 @@ CREATE TABLE pet_scores (
 INSERT INTO pets (species, image)
 VALUES ('Mametchi', 'https://pbs.twimg.com/media/FP-gyhdaAAUvLLN?format=jpg&name=large');
 
-INSERT INTO users (email, username)
+INSERT INTO users (username, password_hash)
 VALUES 
-('Ianmami@example.com', 'Conor');
+('violet', 'gotchi is cool');
 
 INSERT INTO user_pets (user_id, pet_id, name)
 VALUES ('1', '1', 'omelette');

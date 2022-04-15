@@ -3,8 +3,6 @@ const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
 
-jest.mock('../lib/utils/github');
-
 describe('gotchi-clone routes', () => {
   beforeEach(() => {
     return setup(pool);
@@ -21,7 +19,12 @@ describe('gotchi-clone routes', () => {
       species: 'Test pet',
       image: 'image.png',
     };
-    await agent.get('/api/v1/users/login/callback?code=42').redirects(1);
+    const user = {
+      username: 'harold',
+      password: 'haroldiscool',
+    };
+    await agent.post('/api/v1/users').send(user);
+    await agent.post('/api/v1/users/sessions').send(user);
     const res = await agent.post('/api/v1/pets').send(expected);
     expect(res.body).toEqual({ id: expect.any(String), ...expected });
   });

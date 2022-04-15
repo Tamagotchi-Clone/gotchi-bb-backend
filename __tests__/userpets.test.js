@@ -3,8 +3,6 @@ const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
 
-jest.mock('../lib/utils/github');
-
 describe('gotchi-clone routes', () => {
   beforeEach(() => {
     return setup(pool);
@@ -26,7 +24,12 @@ describe('gotchi-clone routes', () => {
       play: expect.any(String),
       cleanliness: expect.any(String),
     };
-    await agent.get('/api/v1/users/login/callback?code=42').redirects(1);
+    const user = {
+      username: 'harold',
+      password: 'haroldiscool',
+    };
+    await agent.post('/api/v1/users').send(user);
+    await agent.post('/api/v1/users/sessions').send(user);
     const res = await agent.post('/api/v1/userpets').send(expected);
     expect(res.body).toEqual({ id: expect.any(String), ...expected });
   });
@@ -43,7 +46,12 @@ describe('gotchi-clone routes', () => {
       play: expect.any(String),
       cleanliness: expect.any(String),
     };
-    await agent.get('/api/v1/users/login/callback?code=42').redirects(1);
+    const user = {
+      username: 'harold',
+      password: 'haroldiscool',
+    };
+    await agent.post('/api/v1/users').send(user);
+    await agent.post('/api/v1/users/sessions').send(user);
     await agent.post('/api/v1/userpets').send(expected);
     const res = await agent.get('/api/v1/userpets');
     expect(res.body).toEqual([
@@ -72,7 +80,12 @@ describe('gotchi-clone routes', () => {
       play: expect.any(String),
       cleanliness: expect.any(String),
     };
-    await agent.get('/api/v1/users/login/callback?code=42').redirects(1);
+    const user = {
+      username: 'harold',
+      password: 'haroldiscool',
+    };
+    await agent.post('/api/v1/users').send(user);
+    await agent.post('/api/v1/users/sessions').send(user);
     await agent.post('/api/v1/userpets').send(expected);
 
     const res = await agent.get(`/api/v1/userpets/${expected.id}`);
@@ -91,7 +104,12 @@ describe('gotchi-clone routes', () => {
       play: expect.any(String),
       cleanliness: expect.any(String),
     };
-    await agent.get('/api/v1/users/login/callback?code=42').redirects(1);
+    const user = {
+      username: 'harold',
+      password: 'haroldiscool',
+    };
+    await agent.post('/api/v1/users').send(user);
+    await agent.post('/api/v1/users/sessions').send(user);
     await agent.post('/api/v1/userpets').send(expected);
     const res = await agent
       .patch(`/api/v1/userpets/${expected.id}`)
@@ -119,7 +137,12 @@ describe('gotchi-clone routes', () => {
       play: expect.any(String),
       cleanliness: expect.any(String),
     };
-    await agent.get('/api/v1/users/login/callback?code=42').redirects(1);
+    const user = {
+      username: 'harold',
+      password: 'haroldiscool',
+    };
+    await agent.post('/api/v1/users').send(user);
+    await agent.post('/api/v1/users/sessions').send(user);
     await agent.post('/api/v1/userpets').send(expected);
     const res = await agent.delete(`/api/v1/userpets/${expected.id}`);
     expect(res.body).toEqual(expected);
@@ -138,8 +161,12 @@ describe('gotchi-clone routes', () => {
       cleanliness: expect.any(String),
     };
 
-    await agent.get('/api/v1/users/login/callback?code=42').redirects(1);
-
+    const user = {
+      username: 'harold',
+      password: 'haroldiscool',
+    };
+    await agent.post('/api/v1/users').send(user);
+    await agent.post('/api/v1/users/sessions').send(user);
     await agent.post('/api/v1/userpets').send(expected);
 
     const res = await agent
@@ -169,8 +196,12 @@ describe('gotchi-clone routes', () => {
       cleanliness: expect.any(String),
     };
 
-    await agent.get('/api/v1/users/login/callback?code=42').redirects(1);
-
+    const user = {
+      username: 'harold',
+      password: 'haroldiscool',
+    };
+    await agent.post('/api/v1/users').send(user);
+    await agent.post('/api/v1/users/sessions').send(user);
     await agent.post('/api/v1/userpets').send(expected);
 
     const res = await agent
@@ -200,7 +231,12 @@ describe('gotchi-clone routes', () => {
       cleanliness: expect.any(String),
     };
 
-    await agent.get('/api/v1/users/login/callback?code=42').redirects(1);
+    const user = {
+      username: 'harold',
+      password: 'haroldiscool',
+    };
+    await agent.post('/api/v1/users').send(user);
+    await agent.post('/api/v1/users/sessions').send(user);
 
     await agent.post('/api/v1/userpets').send(expected);
 
