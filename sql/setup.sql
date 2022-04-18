@@ -16,8 +16,8 @@ CREATE TABLE pets (
 
 CREATE TABLE user_pets (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    user_id BIGINT REFERENCES users(id),
-    pet_id BIGINT REFERENCES pets(id),
+    user_id BIGINT REFERENCES users(id) NOT NULL,
+    pet_id BIGINT REFERENCES pets(id) NOT NULL,
     name TEXT,
     hunger TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     play  TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
@@ -33,7 +33,18 @@ CREATE TABLE pet_scores (
 );
 
 INSERT INTO pets (species, image)
-VALUES ('Mametchi', 'https://pbs.twimg.com/media/FP-gyhdaAAUvLLN?format=jpg&name=large');
+VALUES ('Mametchi', 'https://pbs.twimg.com/media/FP-gyhdaAAUvLLN?format=jpg&name=large'),
+('Evil Guy', 'https://cdn2.vectorstock.com/i/1000x1000/35/86/tamagotchi-game-with-pixel-animal-pet-simulator-vector-19753586.jpg'),
+('Bat', '/assets/pet1.png'),
+('Bunny', '/assets/pet2.png'),
+('Elephant', '/assets/pet3.png'),
+('Rooster', '/assets/pet4.png'),
+('Piggy', '/assets/pet5.png'),
+('Lion', '/assets/pet6.png'),
+('Giraffe', '/assets/pet7.png'),
+('Wormy', '/assets/pet8.png'),
+('Turtle', '/assets/pet9.png'),
+('Snail', '/assets/pet10.png');
 
 INSERT INTO users (username, password_hash)
 VALUES 
