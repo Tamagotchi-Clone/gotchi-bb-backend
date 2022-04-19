@@ -13,7 +13,6 @@ CREATE TABLE pets (
     image TEXT NOT NULL
 );
 
-
 CREATE TABLE user_pets (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     user_id BIGINT REFERENCES users(id) NOT NULL,
@@ -33,7 +32,8 @@ CREATE TABLE pet_scores (
 );
 
 INSERT INTO pets (species, image)
-VALUES ('Chicky', 'https://i.postimg.cc/1f3txb9Q/pet1.png'),
+
+VALUES ('Chikcy', 'https://i.postimg.cc/1f3txb9Q/pet1.png'),
 ('Seahorse', 'https://i.postimg.cc/21qSyvb9/pet2.png'),
 ('Dino', 'https://i.postimg.cc/bGkYHhRQ/pet3.png'),
 ('lil guy', 'https://i.postimg.cc/QFRxTtc8/pet4.png'),
