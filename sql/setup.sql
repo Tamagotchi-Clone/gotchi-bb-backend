@@ -16,8 +16,8 @@ CREATE TABLE pets (
 
 CREATE TABLE user_pets (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    user_id BIGINT REFERENCES users(id),
-    pet_id BIGINT REFERENCES pets(id),
+    user_id BIGINT REFERENCES users(id) NOT NULL,
+    pet_id BIGINT REFERENCES pets(id) NOT NULL,
     name TEXT,
     hunger TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     play  TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
@@ -33,7 +33,20 @@ CREATE TABLE pet_scores (
 );
 
 INSERT INTO pets (species, image)
-VALUES ('Mametchi', '../assets/pet4.png');
+
+VALUES ('Chikcy', 'https://i.postimg.cc/1f3txb9Q/pet1.png'),
+('Seahorse', 'https://i.postimg.cc/21qSyvb9/pet2.png'),
+('Dino', 'https://i.postimg.cc/bGkYHhRQ/pet3.png'),
+('lil guy', 'https://i.postimg.cc/QFRxTtc8/pet4.png'),
+('Snail', 'https://i.postimg.cc/N9tsdzNZ/pet5.png'),
+('Doggo', 'https://i.postimg.cc/cgcs2B2C/pet6.png'),
+('Sheepy', 'https://i.postimg.cc/V0LY8bPR/pet7.png'),
+('Turtle', 'https://i.postimg.cc/z30zkpTP/pet8.png'),
+('Piggy', 'https://i.postimg.cc/jCsqNBn7/pet9.png'),
+('Sleepy Cat', 'https://i.postimg.cc/XpqV1F8N/pet10.png'),
+('Bunny', 'https://i.postimg.cc/9DqcChKv/pet11.png'),
+('Giraffe', 'https://i.postimg.cc/xkDndZSq/pet12.png');
+
 
 INSERT INTO users (username, password_hash)
 VALUES 
