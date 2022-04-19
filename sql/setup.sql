@@ -33,7 +33,7 @@ CREATE TABLE pet_scores (
 );
 
 INSERT INTO pets (species, image)
-VALUES ('Mametchi', 'https://pbs.twimg.com/media/FP-gyhdaAAUvLLN?format=jpg&name=large');
+VALUES ('Mametchi', '../assets/pet4.png');
 
 INSERT INTO users (username, password_hash)
 VALUES 
