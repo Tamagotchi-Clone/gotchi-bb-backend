@@ -13,7 +13,6 @@ CREATE TABLE pets (
     image TEXT NOT NULL
 );
 
-
 CREATE TABLE user_pets (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     user_id BIGINT REFERENCES users(id),
