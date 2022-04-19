@@ -30,7 +30,6 @@ describe('gotchi-clone auth routes', () => {
       .post('/api/v1/users/sessions')
       .send({ username: 'tom agatchi', password: 'gotchi' });
     expect(res.body).toEqual({
-      message: 'You are signed in!',
       user: { ...user },
     });
   });
