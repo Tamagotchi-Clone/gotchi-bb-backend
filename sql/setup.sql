@@ -33,7 +33,7 @@ CREATE TABLE pet_scores (
 );
 
 INSERT INTO pets (species, image)
-VALUES ('Chikcy', 'https://i.postimg.cc/1f3txb9Q/pet1.png'),
+VALUES ('Chicky', 'https://i.postimg.cc/1f3txb9Q/pet1.png'),
 ('Seahorse', 'https://i.postimg.cc/21qSyvb9/pet2.png'),
 ('Dino', 'https://i.postimg.cc/bGkYHhRQ/pet3.png'),
 ('lil guy', 'https://i.postimg.cc/QFRxTtc8/pet4.png'),
