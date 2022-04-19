@@ -68,6 +68,28 @@ describe('gotchi-clone routes', () => {
     ]);
   });
 
+  it('gets pet by user id', async () => {
+    const agent = request.agent(app);
+    const expected = {
+      cleanliness: expect.any(String),
+      hunger: expect.any(String),
+      id: '1',
+      name: 'omelette',
+      petId: '1',
+      play: expect.any(String),
+      userId: '1',
+    };
+    const user = {
+      username: 'harold',
+      password: 'haroldiscool',
+    };
+    await agent.post('/api/v1/users').send(user);
+    await agent.post('/api/v1/users/sessions').send(user);
+
+    const res = await agent.get('/api/v1/userpets/1');
+    expect(res.body).toEqual(expected);
+  });
+
   it('gets pet by id', async () => {
     const agent = request.agent(app);
 

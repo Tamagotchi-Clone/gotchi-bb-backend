@@ -34,9 +34,63 @@ describe('gotchi-clone routes', () => {
     const expected = [
       {
         id: '1',
-        species: 'Mametchi',
-        image:
-          'https://pbs.twimg.com/media/FP-gyhdaAAUvLLN?format=jpg&name=large',
+        species: 'Chikcy',
+        image: 'https://i.postimg.cc/1f3txb9Q/pet1.png',
+      },
+      {
+        id: '2',
+        species: 'Seahorse',
+        image: 'https://i.postimg.cc/21qSyvb9/pet2.png',
+      },
+      {
+        id: '3',
+        species: 'Dino',
+        image: 'https://i.postimg.cc/bGkYHhRQ/pet3.png',
+      },
+      {
+        id: '4',
+        species: 'lil guy',
+        image: 'https://i.postimg.cc/QFRxTtc8/pet4.png',
+      },
+      {
+        id: '5',
+        species: 'Snail',
+        image: 'https://i.postimg.cc/N9tsdzNZ/pet5.png',
+      },
+      {
+        id: '6',
+        species: 'Doggo',
+        image: 'https://i.postimg.cc/cgcs2B2C/pet6.png',
+      },
+      {
+        id: '7',
+        species: 'Sheepy',
+        image: 'https://i.postimg.cc/V0LY8bPR/pet7.png',
+      },
+      {
+        id: '8',
+        species: 'Turtle',
+        image: 'https://i.postimg.cc/z30zkpTP/pet8.png',
+      },
+      {
+        id: '9',
+        species: 'Piggy',
+        image: 'https://i.postimg.cc/jCsqNBn7/pet9.png',
+      },
+      {
+        id: '10',
+        species: 'Sleepy Cat',
+        image: 'https://i.postimg.cc/XpqV1F8N/pet10.png',
+      },
+      {
+        id: '11',
+        species: 'Bunny',
+        image: 'https://i.postimg.cc/9DqcChKv/pet11.png',
+      },
+      {
+        id: '12',
+        species: 'Giraffe',
+        image: 'https://i.postimg.cc/xkDndZSq/pet12.png',
       },
     ];
     const res = await agent.get('/api/v1/pets/');
@@ -47,9 +101,8 @@ describe('gotchi-clone routes', () => {
     const agent = request.agent(app);
     const expected = {
       id: '1',
-      species: 'Mametchi',
-      image:
-        'https://pbs.twimg.com/media/FP-gyhdaAAUvLLN?format=jpg&name=large',
+      species: 'Chikcy',
+      image: 'https://i.postimg.cc/1f3txb9Q/pet1.png',
     };
     const res = await agent.get(`/api/v1/pets/${expected.id}`);
     expect(res.body).toEqual(expected);
@@ -71,7 +124,7 @@ describe('gotchi-clone routes', () => {
     expect(res.body).toEqual({
       id: expect.any(String),
       species: 'test test',
-      image: 'image.png',
+      image: 'https://i.postimg.cc/21qSyvb9/pet2.png',
     });
   });
 
@@ -80,8 +133,8 @@ describe('gotchi-clone routes', () => {
 
     const expected = {
       id: '2',
-      species: 'Test pet',
-      image: 'image.png',
+      species: 'Seahorse',
+      image: 'https://i.postimg.cc/21qSyvb9/pet2.png',
     };
 
     await agent.post('/api/v1/pets').send(expected);
