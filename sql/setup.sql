@@ -35,7 +35,7 @@ INSERT INTO pets (species, image)
 
 VALUES ('Chikcy', 'https://i.postimg.cc/1f3txb9Q/pet1.png'),
 ('Seahorse', 'https://i.postimg.cc/21qSyvb9/pet2.png'),
-('Dino', 'https://i.postimg.cc/bGkYHhRQ/pet3.png'),
+('Dinosaur', 'https://i.postimg.cc/bGkYHhRQ/pet3.png'),
 ('lil guy', 'https://i.postimg.cc/QFRxTtc8/pet4.png'),
 ('Snail', 'https://i.postimg.cc/N9tsdzNZ/pet5.png'),
 ('Doggo', 'https://i.postimg.cc/cgcs2B2C/pet6.png'),
