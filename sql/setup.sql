@@ -33,18 +33,18 @@ CREATE TABLE pet_scores (
 );
 
 INSERT INTO pets (species, image)
-VALUES ('Mametchi', 'https://pbs.twimg.com/media/FP-gyhdaAAUvLLN?format=jpg&name=large'),
-('Evil Guy', 'https://cdn2.vectorstock.com/i/1000x1000/35/86/tamagotchi-game-with-pixel-animal-pet-simulator-vector-19753586.jpg'),
-('Bat', '/assets/pet1.png'),
-('Bunny', '/assets/pet2.png'),
-('Elephant', '/assets/pet3.png'),
-('Rooster', '/assets/pet4.png'),
-('Piggy', '/assets/pet5.png'),
-('Lion', '/assets/pet6.png'),
-('Giraffe', '/assets/pet7.png'),
-('Wormy', '/assets/pet8.png'),
-('Turtle', '/assets/pet9.png'),
-('Snail', '/assets/pet10.png');
+VALUES ('Chikcy', 'https://i.postimg.cc/1f3txb9Q/pet1.png'),
+('Seahorse', 'https://i.postimg.cc/21qSyvb9/pet2.png'),
+('Dino', 'https://i.postimg.cc/bGkYHhRQ/pet3.png'),
+('lil guy', 'https://i.postimg.cc/QFRxTtc8/pet4.png'),
+('Snail', 'https://i.postimg.cc/N9tsdzNZ/pet5.png'),
+('Doggo', 'https://i.postimg.cc/cgcs2B2C/pet6.png'),
+('Sheepy', 'https://i.postimg.cc/V0LY8bPR/pet7.png'),
+('Turtle', 'https://i.postimg.cc/z30zkpTP/pet8.png'),
+('Piggy', 'https://i.postimg.cc/jCsqNBn7/pet9.png'),
+('Sleepy Cat', 'https://i.postimg.cc/XpqV1F8N/pet10.png'),
+('Bunny', 'https://i.postimg.cc/9DqcChKv/pet11.png'),
+('Giraffe', 'https://i.postimg.cc/xkDndZSq/pet12.png');
 
 INSERT INTO users (username, password_hash)
 VALUES 
