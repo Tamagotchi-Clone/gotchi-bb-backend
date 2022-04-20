@@ -17,7 +17,7 @@ describe('gotchi-clone routes', () => {
 
     const expected = {
       id: '2',
-      userId: '1',
+      userId: '2',
       petId: '1',
       name: 'Omelette',
       hunger: expect.any(String),
@@ -39,7 +39,7 @@ describe('gotchi-clone routes', () => {
 
     const expected = {
       id: '2',
-      userId: '1',
+      userId: '2',
       petId: '1',
       name: 'Omelette',
       hunger: expect.any(String),
@@ -75,6 +75,7 @@ describe('gotchi-clone routes', () => {
       hunger: expect.any(String),
       id: '1',
       name: 'omelette',
+      image: 'https://i.postimg.cc/1f3txb9Q/pet1.png',
       petId: '1',
       play: expect.any(String),
       userId: '1',
@@ -95,9 +96,10 @@ describe('gotchi-clone routes', () => {
 
     const expected = {
       id: '2',
-      userId: '1',
+      userId: '2',
       petId: '1',
       name: 'Omelette',
+      image: 'https://i.postimg.cc/1f3txb9Q/pet1.png',
       hunger: expect.any(String),
       play: expect.any(String),
       cleanliness: expect.any(String),
@@ -119,7 +121,7 @@ describe('gotchi-clone routes', () => {
 
     const expected = {
       id: '2',
-      userId: '1',
+      userId: '2',
       petId: '1',
       name: 'Omelette',
       hunger: expect.any(String),
@@ -138,7 +140,7 @@ describe('gotchi-clone routes', () => {
       .send({ name: 'egg' });
     expect(res.body).toEqual({
       id: '2',
-      userId: '1',
+      userId: '2',
       petId: '1',
       name: 'egg',
       hunger: expect.any(String),
@@ -152,7 +154,7 @@ describe('gotchi-clone routes', () => {
 
     const expected = {
       id: '2',
-      userId: '1',
+      userId: '2',
       petId: '1',
       name: 'Omelette',
       hunger: expect.any(String),
@@ -175,7 +177,7 @@ describe('gotchi-clone routes', () => {
 
     const expected = {
       id: '2',
-      userId: '1',
+      userId: '2',
       petId: '1',
       name: 'Omelette',
       hunger: expect.any(String),
@@ -196,7 +198,7 @@ describe('gotchi-clone routes', () => {
       .send(expected.id);
     expect(res.body).toEqual({
       id: '2',
-      userId: '1',
+      userId: '2',
       petId: '1',
       name: 'Omelette',
       hunger: expect.any(String),
@@ -210,7 +212,7 @@ describe('gotchi-clone routes', () => {
 
     const expected = {
       id: '2',
-      userId: '1',
+      userId: '2',
       petId: '1',
       name: 'Omelette',
       hunger: expect.any(String),
@@ -231,7 +233,7 @@ describe('gotchi-clone routes', () => {
       .send(expected.id);
     expect(res.body).toEqual({
       id: '2',
-      userId: '1',
+      userId: '2',
       petId: '1',
       name: 'Omelette',
       hunger: expect.any(String),
@@ -245,7 +247,7 @@ describe('gotchi-clone routes', () => {
 
     const expected = {
       id: '2',
-      userId: '1',
+      userId: '2',
       petId: '1',
       name: 'Omelette',
       hunger: expect.any(String),
@@ -267,7 +269,7 @@ describe('gotchi-clone routes', () => {
       .send(expected.id);
     expect(res.body).toEqual({
       id: '2',
-      userId: '1',
+      userId: '2',
       petId: '1',
       name: 'Omelette',
       hunger: expect.any(String),
