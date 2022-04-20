@@ -9,3 +9,4 @@ This is the official backend code for [gatchi bb](https://github.com/Tamagotchi-
 - Jest
 - Bcrypt
 - CORS
+- Express
