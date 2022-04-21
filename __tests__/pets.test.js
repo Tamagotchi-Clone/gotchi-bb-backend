@@ -34,7 +34,7 @@ describe('gotchi-clone routes', () => {
     const expected = [
       {
         id: '1',
-        species: 'Chikcy',
+        species: 'Chicky',
         image: 'https://i.postimg.cc/1f3txb9Q/pet1.png',
       },
       {
@@ -101,7 +101,7 @@ describe('gotchi-clone routes', () => {
     const agent = request.agent(app);
     const expected = {
       id: '1',
-      species: 'Chikcy',
+      species: 'Chicky',
       image: 'https://i.postimg.cc/1f3txb9Q/pet1.png',
     };
     const res = await agent.get(`/api/v1/pets/${expected.id}`);
