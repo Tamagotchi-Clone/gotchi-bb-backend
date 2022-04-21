@@ -29,7 +29,6 @@ describe('scores routes', () => {
     await agent.post('/api/v1/users/sessions').send(user);
     const res = await agent.post('/api/v1/scores').send(expected);
     expect(res.body).toEqual({
-      id: expect.any(String),
       userId: expect.any(String),
       ...expected,
     });
@@ -49,23 +48,21 @@ describe('scores routes', () => {
     expect(res.body[0]).toEqual(expected);
   });
 
-  it('gets the scores by id', async () => {
+  it('gets the scores by user id', async () => {
     const agent = request.agent(app);
     const expected = {
-      id: '1',
       userId: '1',
       hunger: 1,
       play: 1,
       cleanliness: 1,
     };
-    const res = await agent.get(`/api/v1/scores/${expected.id}`);
+    const res = await agent.get(`/api/v1/scores/${expected.userId}`);
     expect(res.body).toEqual(expected);
   });
 
   it('updates a score', async () => {
     const agent = request.agent(app);
     const expected = {
-      id: '1',
       userId: '1',
       hunger: 1,
       play: 1,
@@ -73,10 +70,9 @@ describe('scores routes', () => {
     };
     await agent.post('/api.v1.scores').send(expected);
     const res = await agent
-      .patch(`/api/v1/scores/${expected.id}`)
+      .patch(`/api/v1/scores/${expected.userId}`)
       .send({ hunger: 2 });
     expect(res.body).toEqual({
-      id: expect.any(String),
       userId: '1',
       hunger: 2,
       play: 1,
