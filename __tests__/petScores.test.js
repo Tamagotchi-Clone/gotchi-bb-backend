@@ -68,7 +68,7 @@ describe('scores routes', () => {
       play: 1,
       cleanliness: 1,
     };
-    await agent.post('/api.v1.scores').send(expected);
+    await agent.post('/api/v1/scores').send(expected);
     const res = await agent
       .patch(`/api/v1/scores/${expected.userId}`)
       .send({ hunger: 2 });
@@ -78,5 +78,17 @@ describe('scores routes', () => {
       play: 1,
       cleanliness: 1,
     });
+  });
+
+  it('deletes a score', async () => {
+    const agent = request.agent(app);
+    const expected = {
+      userId: '1',
+      hunger: 1,
+      play: 1,
+      cleanliness: 1,
+    };
+    const res = await agent.delete(`/api/v1/scores/${expected.userId}`);
+    expect(res.body).toEqual(expected);
   });
 });
